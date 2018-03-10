@@ -1,0 +1,22 @@
+{
+  "name": "autocaptionfontend",
+  "version": "1.0.0",
+  "description": "一个提取字幕的网站(express)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/njuptalex/AutoCaptionFontEnd.git"
+  },
+  "author": "AlexChen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/njuptalex/AutoCaptionFontEnd/issues"
+  },
+  "homepage": "https://github.com/njuptalex/AutoCaptionFontEnd#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
