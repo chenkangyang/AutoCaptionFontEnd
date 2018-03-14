@@ -1,4 +1,7 @@
 from websocket_server import WebsocketServer
+from Caption import get_caption
+
+import json
 
 # Called for every client connecting (after handshake)
 def new_client(client, server):
@@ -16,6 +19,12 @@ def message_received(client, server, message):
 	if len(message) > 200:
 		message = message[:200]+'..'
 	print("Client(%d) said: %s" % (client['id'], message))
+	js_object = json.loads(message)
+	media_path = js_object['path']
+	sr_path = get_caption(media_path)
+	print(sr_path)
+	server.send_message(client,sr_path)
+
 
 
 PORT=9001

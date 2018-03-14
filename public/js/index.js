@@ -5,19 +5,20 @@ function uploadSocket(obj) {
     ws = new WebSocket("ws://localhost:9001/");
     // Set event handlers.
     ws.onopen = function () {
-        ws.send(obj);
+        ws.send(JSON.stringify(obj));
     };
 
     ws.onmessage = function (e) {
         // e.data contains received string.
         console.log(e.data);
+        console.log(typeof e.data);
         $("#download-btn").attr("style", "display:block;");
         $("#loading-animation").attr("style", "display:none;");
         $("#download-btn").click(function () {
-            $.get("http://127.0.0.1:3000/srt-download", {
-                'dir': "download",
-                'name': e.data
-            });
+            console.log("链接");
+            var url = "http://127.0.0.1:3000/srt-download?dir=download&name=" + e.data;
+            console.log(e.data);
+            downloadByIframe(url);
         })
     };
 
@@ -25,6 +26,19 @@ function uploadSocket(obj) {
     ws.onerror = function (e) {
         console.log(e);
     };
+}
+
+function downloadByIframe(url) {
+    var iframe = document.getElementById("myIframe");
+    if (iframe) {
+        iframe.src = url;
+    } else {
+        iframe = document.createElement("iframe");
+        iframe.style.display = "none";
+        iframe.src = url;
+        iframe.id = "myIframe";
+        document.body.appendChild(iframe);
+    }
 }
 
 function onprogress(evt) {　　
