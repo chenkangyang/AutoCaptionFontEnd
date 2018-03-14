@@ -27,17 +27,19 @@
                 <div class="text-center">
                     <img src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
                     <h1 class="h3 font-weight-normal">提取字幕中的文字</h1>
-                    <p>上传你的视频，支持多种视频
-                        <code role="button" class="btn" data-toggle="tooltip" data-placement="bottom" title="mp4,flv...">格式</code> 处理得到字幕文件.
+                    <p>上传你的视频，支持视频
+                        <code role="button" class="btn" data-toggle="tooltip" data-placement="bottom" title="wav">格式</code> 处理得到字幕文件.
                     </p>
                     <div id="codeError" class="alert alert-danger" style="display:none" role="alert">
-                        文件格式错误！
+                        文件格式错误！应上传wav格式
                         <a class="close" data-dismiss="alert" href="#">&times;</a>
                     </div>
                     <input id="fileinput" type="file" class="file" data-show-preview="false" data-language="zh" name="video">
                     <div class="progress"  style="display:none">
                         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
                     </div>
+                    <img src="img/loading.gif" alt="" id="loading-animation">
+                    <button type="button" class="btn btn-success" id="download-btn">下载字幕(.srt)</button>
                 </div>
             </form>
         </div>

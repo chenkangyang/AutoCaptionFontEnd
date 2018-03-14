@@ -2,6 +2,7 @@ var express = require('express');
 var connect = require('connect');
 var http = require('http');
 var fs = require('fs');
+var path = require('path');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var multer = require('multer')
@@ -79,6 +80,36 @@ app.post('/file-upload', upload.single('video'), function (req, res, next) {
     res.end(JSON.stringify(obj));
 });
 
+app.get('/srt-download', function (req, res, next) {
+    console.log(req.query);
+    var currDir = path.normalize(req.query.dir),
+        fileName = req.query.name,
+        currFile = path.join(currDir, fileName),
+        fReadStream;
+    console.log(currDir);
+    console.log(fileName);
+    console.log("---------访问下载路径-------------");
+    fs.exists(currFile, function (exist) {
+        if (exist) {
+            console.log("文件存在");
+            res.set({
+                "Content-type": "application/octet-stream",
+                "Content-Disposition": "attachment;filename=" + encodeURI(fileName)
+            });
+            console.log("读取文件完毕，正在发送......");
+            fReadStream = fs.createReadStream(currFile);
+            fReadStream.on("data", (chunk) => res.write(chunk, "binary"));
+            fReadStream.on("end", function () {
+                console.log("文件发送完毕");
+                res.end();
+            });
+        } else {
+            res.set("Content-type", "text/html");
+            res.send("file not exist!");
+            res.end();
+        }
+    });
+});
 var server = app.listen(3000, function () {
     var host = server.address().address;
     var port = server.address().port;

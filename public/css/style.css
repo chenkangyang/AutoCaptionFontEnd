@@ -17,3 +17,13 @@ html,body{
 .progress {
     margin-top: 30px;
 }
+
+#download-btn {
+    margin-top: 30px;
+    display: none;
+}
+#loading-animation {
+    display: none;
+    margin-top: 30px;    
+    margin: 0 auto;
+}

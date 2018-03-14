@@ -10,11 +10,20 @@ function uploadSocket(obj) {
 
     ws.onmessage = function (e) {
         // e.data contains received string.
+        console.log(e.data);
+        $("#download-btn").attr("style", "display:block;");
+        $("#loading-animation").attr("style", "display:none;");
+        $("#download-btn").click(function () {
+            $.get("http://127.0.0.1:3000/srt-download", {
+                'dir': "download",
+                'name': e.data
+            });
+        })
     };
 
     ws.onclose = function () {};
     ws.onerror = function (e) {
-        console.log(e)
+        console.log(e);
     };
 }
 
@@ -29,7 +38,7 @@ function onprogress(evt) {　　
 
 function checkFileExt(filename) {
     var flag = false; //状态
-    var arr = ["flv", "mp4", "png"];
+    var arr = ["wav"];
     //取出上传文件的扩展名
     var index = filename.lastIndexOf(".");
     var ext = filename.substr(index + 1);
@@ -87,6 +96,7 @@ window.onload = function () {
                 success: function (data) {
                     console.log(data);
                     $(".fileinput-remove-button").click();
+                    $("#loading-animation").attr("style", "display:block;");
                     uploadSocket(data);
                 }
             });    
