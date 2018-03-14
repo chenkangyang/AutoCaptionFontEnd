@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>提取视频中的字幕</title>
+    <link href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/index.js"></script>
+    <link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="js/fileinput.min.js"></script>
+    <script src="js/zh.js"></script>
+    <script src="js/jquery.form.js"></script>    
+</head>
+
+<body>
+    <div class="container col-center">
+        <div class="form-container row ">
+            <form id="uploadForm" class="form-upload text-center col col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12" enctype="multipart/form-data">
+                <div class="text-center">
+                    <img src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                    <h1 class="h3 font-weight-normal">提取字幕中的文字</h1>
+                    <p>上传你的视频，支持多种视频
+                        <code role="button" class="btn" data-toggle="tooltip" data-placement="bottom" title="mp4,flv...">格式</code> 处理得到字幕文件.
+                    </p>
+                    <div id="codeError" class="alert alert-danger" style="display:none" role="alert">
+                        文件格式错误！
+                        <a class="close" data-dismiss="alert" href="#">&times;</a>
+                    </div>
+                    <input id="fileinput" type="file" class="file" data-show-preview="false" data-language="zh" name="video">
+                    <div class="progress"  style="display:none">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
