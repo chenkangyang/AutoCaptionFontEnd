@@ -14,6 +14,7 @@ app.use(cors());
 // parse application/json  
 app.use(bodyParser.json())
 app.use(express.static('public'));
+app.use(express.static('upload'));
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
