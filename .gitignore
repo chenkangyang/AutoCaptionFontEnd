@@ -3,7 +3,8 @@ node_modules
 dist/
 npm-debug.log
 yarn-error.log
-upload
+upload／
+download/
 __pycache__
 
 # Editor directories and files
@@ -12,3 +13,6 @@ __pycache__
 *.ntvs*
 *.njsproj
 *.sln
+*.wav
+*.mp4
+*.srt

@@ -12,14 +12,16 @@ function uploadSocket(obj) {
         // e.data contains received string.
         console.log(e.data);
         console.log(typeof e.data);
-        $("#download-btn").attr("style", "display:block;");
-        $("#loading-animation").attr("style", "display:none;");
-        $("#download-btn").click(function () {
-            console.log("链接");
-            var url = "http://127.0.0.1:3000/srt-download?dir=download&name=" + e.data;
-            console.log(e.data);
-            downloadByIframe(url);
-        })
+        if (e.data.search("video")!=-1) {
+            $("#download-btn").attr("style", "display:block;");
+            $("#loading-animation").attr("style", "display:none;");
+            $("#download-btn").click(function () {
+                console.log("链接");
+                var url = "http://127.0.0.1:3000/srt-download?dir=download&name=" + e.data;
+                console.log(e.data);
+                downloadByIframe(url);
+            });
+        }
     };
 
     ws.onclose = function () {};

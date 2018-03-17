@@ -54,7 +54,7 @@ var storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         // 将保存文件名设置为 字段名 + 时间戳，比如 logo-1478521468943
-        cb(null, file.fieldname + '-' + '-' + Date.now() + file.originalname);
+        cb(null, file.fieldname + '-' + Date.now() + '-' + file.originalname);
     }
 });
 

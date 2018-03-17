@@ -8,12 +8,14 @@ node v 8.9.1
 
 npm install
 
+pip install -r requirements.txt
+
 node app.js
 
 python server.py
 ```
 
-
+pydub基于ffmpeg，应先安装ffmpeg
 
 express 作为中间件负责文件的存储
 
