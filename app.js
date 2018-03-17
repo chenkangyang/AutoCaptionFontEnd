@@ -44,8 +44,10 @@ var createFolder = function (folder) {
 };
 
 var uploadFolder = './upload/';
+var downloadFolder = './download';
 
 createFolder(uploadFolder);
+createFolder(downloadFolder);
 
 // 通过 filename 属性定制
 var storage = multer.diskStorage({
