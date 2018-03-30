@@ -12,7 +12,7 @@ def findIndex(vol,thres,min_voice,space):
     print(l)
     ii = 0
     p = 0   #p储存上一个段落的下标
-    index = np.zeros([l,2],dtype=np.int16)
+    index = np.zeros([l,2],dtype=np.int64)
     for i in range(l-1):
         #判断头尾
         if i==0 and vol[i]>thres:

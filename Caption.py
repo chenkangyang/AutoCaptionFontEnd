@@ -54,7 +54,7 @@ class AudioSection():
 		#声道，量化位数，采样频率，采样点数
 		self.nchannels, self.sampwidth, self.framerate, self.nframes = params[:4]
 		strData = fw.readframes(self.nframes)
-		waveData = np.fromstring(strData, dtype=np.int64)
+		waveData = np.fromstring(strData, dtype=np.int16)
 		#音频信息
 		self.waveData = waveData*1.0/max(abs(waveData))  # normalization
 		fw.close()
@@ -140,7 +140,7 @@ class AudioSection():
 
 def get_caption(path):
 	aduio = AudioSection(path)
-	index,threshold = aduio.end_point_div(40,30)
+	index,threshold = aduio.end_point_div(50,35)
 	sections = aduio.get_text(index)
 	srt_path = "download/"+path[7:-4]+".srt"
 	aduio.write_to_file(srt_path,sections)
