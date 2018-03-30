@@ -54,7 +54,7 @@ class AudioSection():
 		#声道，量化位数，采样频率，采样点数
 		self.nchannels, self.sampwidth, self.framerate, self.nframes = params[:4]
 		strData = fw.readframes(self.nframes)
-		waveData = np.fromstring(strData, dtype=np.int16)
+		waveData = np.fromstring(strData, dtype=np.int64)
 		#音频信息
 		self.waveData = waveData*1.0/max(abs(waveData))  # normalization
 		fw.close()
@@ -94,7 +94,7 @@ class AudioSection():
 			if result.__contains__('result'):
 				result = result['result'][0]
 			else:
-				result['result'] = ['None']
+				result['result'] = ['']
 				result = result['result'][0]
 			sec = {"start":start,"end":end,"result":result}
 			sections.append(sec)
