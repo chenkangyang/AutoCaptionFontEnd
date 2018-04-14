@@ -1,4 +1,4 @@
-#-*- coding: UTF-8 -*-   
+# -*- coding: UTF-8 -*-
 
 from websocket_server import WebsocketServer
 from Caption import get_caption
@@ -6,30 +6,31 @@ from Caption import get_caption
 import json
 
 # Called for every client connecting (after handshake)
+
+
 def new_client(client, server):
-	print("New client connected and was given id %d" % client['id'])
-	server.send_message_to_all("Hey all, a new client has joined us")
+    print("New client connected and was given id %d" % client['id'])
+    server.send_message_to_all("Hey all, a new client has joined us")
 
 
 # Called for every client disconnecting
 def client_left(client, server):
-	print("Client(%d) disconnected" % client['id'])
+    print("Client(%d) disconnected" % client['id'])
 
 
 # Called when a client sends a message
 def message_received(client, server, message):
-	if len(message) > 200:
-		message = message[:200]+'..'
-	print("Client(%d) said: %s" % (client['id'], message))
-	js_object = json.loads(message)
-	media_path = js_object['path']
-	sr_path = get_caption(media_path)
-	print(sr_path)
-	server.send_message(client,sr_path)
+    if len(message) > 200:
+        message = message[:200]+'..'
+    print("Client(%d) said: %s" % (client['id'], message))
+    js_object = json.loads(message)
+    media_path = js_object['path']
+    sr_path = get_caption(media_path)
+    print(sr_path)
+    server.send_message(client, sr_path)
 
 
-
-PORT=9001
+PORT = 9001
 server = WebsocketServer(PORT)
 server.set_fn_new_client(new_client)
 server.set_fn_client_left(client_left)
