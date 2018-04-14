@@ -1,3 +1,5 @@
+#-*- coding: UTF-8 -*-   
+
 from websocket_server import WebsocketServer
 from Caption import get_caption
 

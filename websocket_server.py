@@ -1,3 +1,5 @@
+#-*- coding: UTF-8 -*-   
+
 # Author: Johan Hanssen Seferidis
 # License: MIT
 

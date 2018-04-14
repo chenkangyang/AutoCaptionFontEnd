@@ -1,3 +1,5 @@
+#-*- coding: UTF-8 -*-   
+
 from aip import AipSpeech
 from pydub import AudioSegment
 import wave

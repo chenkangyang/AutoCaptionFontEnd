@@ -1,3 +1,5 @@
+#-*- coding: UTF-8 -*-   
+
 #端点检测，切分音频的函数
 import wave
 import numpy as np
