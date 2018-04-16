@@ -27,6 +27,7 @@ app.use(function(req, res, next) {
   );
   next();
 });
+app.use(bodyParser.json({ "limit":"1000m"}));
 
 app.all("*", function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
