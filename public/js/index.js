@@ -2,7 +2,7 @@ var ws;
 
 function uploadSocket(obj) {
   // Connect to Web Socket
-  ws = new WebSocket("ws://localhost:9001/");
+  ws = new WebSocket("ws://127.0.0.1:9001/");
   // Set event handlers.
   ws.onopen = function() {
     ws.send(JSON.stringify(obj));
