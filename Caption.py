@@ -12,6 +12,7 @@ from end_point_detect import findIndex
 
 import os
 
+
 # 百度API所需的账号参数
 APP_ID = '10116618'
 API_KEY = 'rW1sxqOP129WEO8a043gzTTI'
@@ -146,6 +147,7 @@ class AudioSection():
             for x in range(len(sections)):
                 srt = str(x+1)+"\n"+sections[x]["start"]+" --> " + \
                     sections[x]["end"]+"\n"+sections[x]["result"]+"\n\n"
+                srt = srt.decode('utf-8')
                 fp.write(srt)
 
 
